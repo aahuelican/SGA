@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans >
+    <form-bean name="loginForm" type="sga.web.form.LoginForm" />
+    <form-bean name="personaForm" type="sga.web.form.PersonaForm" />
+  </form-beans>
+
+  <global-exceptions >
+  	<exception key="businessException" 
+  		type="sga.services.exceptions.BusinessException" 
+  		handler="sga.web.ManejadorBusinessException"
+  		path="error.page">
+  	</exception>
+  	<exception key="exception" 
+  		type="java.lang.Exception"
+  		handler="sga.web.ManejadorException" 
+  		path="error.page">
+  	</exception>
+  </global-exceptions>
+  
+  <global-forwards>
+  	<forward name="login" path="login.page" />
+  	<forward name="inicio" path="inicio.page" />
+  	<forward name="listarPersonas" path="listadoPersonas.page" />
+  	<forward name="detallePersona" path="detallePersona.page" />		
+  </global-forwards>
+  <action-mappings >
+    
+    <action   
+    	path="/login"
+      input="login.page"
+      name="loginForm"
+      scope="request"
+      type="sga.web.action.LoginAction"
+      validate="true">
+    </action>
+    
+    <action forward="inicio.page" path="/inicio" />
+    
+    <action
+      path="/persona"
+      name="personaForm"
+       scope="request"
+      type="sga.web.action.PersonaAction"
+      validate="true"
+      parameter="operation">
+      <set-property property="cancellable" value="true" />
+    </action>
+    
+    <action
+      path="/logout"
+      type="sga.web.action.LogoutAction"
+      validate="false">
+    </action>
+  </action-mappings>
+
+<controller 
+		processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+		
+  <message-resources parameter="sga.web.Mensajes" />
+  
+  <plug-in 
+		className="org.apache.struts.tiles.TilesPlugin">
+		<set-property 
+			property="definitions-config" 
+			value="/WEB-INF/tiles-defs.xml" />
+		<set-property 
+			property="moduleAware" 
+			value="true" />
+		<set-property 
+			property="definitions-parser-validate"
+			value="true" />
+	</plug-in>
+	
+	<plug-in
+		className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property
+			property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+	</plug-in>
+	
+</struts-config>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+       
+<tiles-definitions>
+	<definition name="base.template" 
+		path="/WEB-INF/pages/commons/template.jsp">
+		<put name="title" value="" />
+		<put name="header" value="/WEB-INF/pages/commons/header.jsp" />
+		<put name="menu" value="/WEB-INF/pages/commons/menu.jsp" />
+		<put name="msg" value="/WEB-INF/pages/commons/messages.jsp" />
+		<put name="body" value="" />	
+		<put name="footer" value="/WEB-INF/pages/commons/footer.jsp"/>
+	</definition>
+	
+	<definition name="inicio.page" extends="base.template">
+		<put name="title" value="Sistema Web AP" />
+		<put name="body" value="/WEB-INF/pages/sga/inicio.jsp" />
+	</definition>
+	
+	<definition name="login.page" extends="base.template">
+		<put name="title" value="Login" />
+		<put name="body" value="/WEB-INF/pages/sga/login.jsp" />
+	</definition>
+	
+	<definition name="listadoPersonas.page" extends="base.template">
+		<put name="title" value="Listado Personas" />
+		<put name="body" value="/WEB-INF/pages/sga/listadoPersonas.jsp" />
+	</definition>
+
+	<definition name="detallePersona.page" extends="base.template">
+		<put name="title" value="Listado Personas" />
+		<put name="body" value="/WEB-INF/pages/sga/detallePersona.jsp" />
+	</definition>
+
+
+	<definition name="error.page" extends="base.template">
+		<put name="title" value="Página de Error" />
+		<put name="body" value="/WEB-INF/pages/commons/error.jsp" />
+	</definition>
+	
+</tiles-definitions>       
